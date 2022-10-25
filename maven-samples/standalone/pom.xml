@@ -16,7 +16,7 @@
 	<repositories>
 		<repository>
 			<id>Equo-Chromium</id>
-			<url>https://dl.equo.dev/chromium-swt-ce/trial/mvn</url>
+			<url>https://dl.equo.dev/chromium-swt-ce/oss/mvn</url>
 		</repository>
 	</repositories>
 
