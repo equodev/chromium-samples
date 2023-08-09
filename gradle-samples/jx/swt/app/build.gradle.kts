@@ -2,11 +2,13 @@
 val chromiumVersion = "95.0.12"
 val chromiumJxVersion = "${chromiumVersion}.1"
 var vmArgs = "-Dempty"
+var envVars = mutableMapOf<String, String>()
 val os = System.getProperty("os.name").toLowerCase()
 val platform = when {
     os.contains("linux") -> {
+    	envVars["GDK_BACKEND"] = "x11"
         vmArgs = "-Dchromium.init_threads=true"
-        "gtk.linux" 
+        "gtk.linux"
     }
     os.contains("win") -> "win32.win32"
     os.contains("mac") -> {
@@ -43,4 +45,7 @@ dependencies {
 application {
     applicationDefaultJvmArgs = listOf("${vmArgs}")
     mainClass.set("SampleSWT.SampleSWTKt")
+    tasks.named<JavaExec>("run") {
+        environment(envVars)
+    }
 }
