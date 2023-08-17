@@ -12,6 +12,7 @@
 		<swt.version>3.121.0</swt.version>
 		<chromium.version>95.0.12</chromium.version>
 		<chromium.jx.version>${chromium.version}.1</chromium.jx.version>
+		<gdk.backend.value></gdk.backend.value>
 	</properties>
 
 	<repositories>
@@ -70,6 +71,9 @@
 						<classpath />
 						<argument>equochromium.SampleSWT</argument>
 					</arguments>
+					<environmentVariables>
+						<GDK_BACKEND>${gdk.backend.value}</GDK_BACKEND>
+					</environmentVariables>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -84,6 +88,7 @@
 				</os>
 			</activation>
 			<properties>
+				<gdk.backend.value>x11</gdk.backend.value>
 				<flags>-Dchromium.init_threads=true</flags>
 				<platform>gtk.linux</platform>
 			</properties>

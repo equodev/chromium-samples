@@ -40,6 +40,7 @@ dependencies {
     implementation("com.equo:com.equo.chromium.cef.${platform}.x86_64:${chromiumVersion}")
     implementation("com.equo:com.equo.chromium.jx:${chromiumJxVersion}")
     implementation("org.eclipse.platform:org.eclipse.swt.${platform}.x86_64:3.121.0")
+    implementation("org.eclipse.platform:org.eclipse.swt:3.121.0")
 }
 
 application {
