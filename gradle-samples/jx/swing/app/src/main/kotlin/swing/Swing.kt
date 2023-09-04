@@ -28,7 +28,9 @@ fun main() {
 	invokeLater {
 		val view = BrowserView.newInstance(browser)
 		val frame = JFrame(SAMPLE_NAME)
-		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE)
+		frame.setDefaultCloseOperation(
+			if (System.getProperty("os.name").toLowerCase().contains("win")) WindowConstants.DISPOSE_ON_CLOSE 
+			else WindowConstants.EXIT_ON_CLOSE)
 		frame.add(view, BorderLayout.CENTER)
 		frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT)
 		frame.setVisible(true)

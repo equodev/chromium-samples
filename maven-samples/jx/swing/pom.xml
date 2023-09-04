@@ -58,12 +58,7 @@
 				</executions>
 				<configuration>
 					<executable>java</executable>
-					<arguments>
-						<argument>${flags}</argument>
-						<argument>-classpath</argument>
-						<classpath />
-						<argument>equochromium.SampleSwing</argument>
-					</arguments>
+					<commandlineArgs>${flags} -classpath %classpath equochromium.SampleSwing</commandlineArgs>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -101,6 +96,18 @@
 			</activation>
 			<properties>
 				<platform>cocoa.macosx</platform>
+			</properties>
+		</profile>
+		<profile>
+			<id>mac-java17</id>
+			<activation>
+				<os>
+					<family>mac</family>
+				</os>
+				<jdk>[17,)</jdk>
+			</activation>
+			<properties>
+				<flags>--add-opens java.desktop/java.awt=ALL-UNNAMED --add-opens java.desktop/sun.awt=ALL-UNNAMED --add-opens java.desktop/sun.lwawt=ALL-UNNAMED --add-opens java.desktop/sun.lwawt.macosx=ALL-UNNAMED</flags>
 			</properties>
 		</profile>
 	</profiles>

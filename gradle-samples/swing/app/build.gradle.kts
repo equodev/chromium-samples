@@ -1,7 +1,10 @@
 
 val chromiumVersion = "95.0.12"
-var vmArgs = "-Dempty"
 val os = System.getProperty("os.name").toLowerCase()
+var vmArgs = mutableListOf<String>()
+if(os.contains("mac") && JavaVersion.current().majorVersion.toInt() <= 16) {
+    vmArgs.addAll(listOf("--add-opens", "java.desktop/java.awt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.awt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.lwawt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.lwawt.macosx=ALL-UNNAMED"))
+}
 val platform = when {
     os.contains("linux") -> "gtk.linux"
     os.contains("win") -> "win32.win32"
@@ -25,6 +28,6 @@ dependencies {
 }
 
 application {
-    applicationDefaultJvmArgs = listOf("${vmArgs}")
+    applicationDefaultJvmArgs = vmArgs
     mainClass.set("Swing.SwingKt")
 }

@@ -10,7 +10,9 @@ public class SampleSwing extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private SampleSwing() {
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(
+			System.getProperty("os.name").toLowerCase().contains("win") ? EXIT_ON_CLOSE : DISPOSE_ON_CLOSE
+		);
 		ChromiumBrowser browser = ChromiumBrowser.swing(getContentPane(), BorderLayout.CENTER,
 				"https://docs.equo.dev/main/getting-started/introduction.html");
 		setTitle("Sample Swing");

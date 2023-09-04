@@ -10,6 +10,8 @@ The samples allow you to run applications that use different toolkits:
 - *Windowless* (without GUI window)
 - *Swing* (Swing Toolkit)
 
+> **Swing based apps** require **Java 11** or later versions in order to run.
+
 ## JxBrowser replacement
 
 You can run SWT and Swing examples with JxBrowser code using **Equo Chromium JX** provided inside the ***jx*** folder. Read more about it in [Equo documentation](https://docs.equo.dev/chromium/95.x/getting-started/migrating-from-jxbrowser.html) where you will find everything you need to migrate from JxBrowser quickly.
