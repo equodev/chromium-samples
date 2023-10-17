@@ -1,5 +1,5 @@
 
-val chromiumVersion = "95.0.12"
+val chromiumVersion = "116.0.0"
 var vmArgs = "-Dempty"
 val os = System.getProperty("os.name").toLowerCase()
 val platform = when {
@@ -27,7 +27,7 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven(url = "https://dl.equo.dev/chromium-swt-ee/jx/mvn")
+    maven(url = "https://dl.equo.dev/chromium-swt-ce/oss/mvn")
 }
 
 dependencies {

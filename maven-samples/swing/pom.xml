@@ -9,14 +9,14 @@
 
 	<properties>
 		<maven.compiler>11</maven.compiler>
-		<chromium.version>95.0.12</chromium.version>
+		<chromium.version>116.0.0</chromium.version>
 		<flags>-Dempty</flags>
 	</properties>
 
 	<repositories>
 		<repository>
 			<id>Equo-Chromium</id>
-			<url>https://dl.equo.dev/chromium-swt-ee/jx/mvn</url>
+			<url>https://dl.equo.dev/chromium-swt-ce/oss/mvn</url>
 		</repository>
 	</repositories>
 
