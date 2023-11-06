@@ -10,13 +10,14 @@
 	<properties>
 		<maven.compiler>11</maven.compiler>
 		<swt.version>3.121.0</swt.version>
-		<chromium.version>95.0.12</chromium.version>
+		<chromium.version>106.0.0</chromium.version>
+		<arch>${os.arch}</arch>
 	</properties>
 
 	<repositories>
 		<repository>
 			<id>Equo-Chromium</id>
-			<url>https://dl.equo.dev/chromium-swt-ee/jx/mvn</url>
+			<url>https://dl.equo.dev/chromium-swt-ee/equo-gpl/mvn</url>
 		</repository>
 	</repositories>
 
@@ -28,7 +29,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.platform</groupId>
-			<artifactId>org.eclipse.swt.${platform}.x86_64</artifactId>
+			<artifactId>org.eclipse.swt.${platform}.${arch}</artifactId>
 			<version>${swt.version}</version>
 		</dependency>
 		<dependency>
@@ -38,7 +39,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.equo</groupId>
-			<artifactId>com.equo.chromium.cef.${platform}.x86_64</artifactId>
+			<artifactId>com.equo.chromium.cef.${platform}.${arch}</artifactId>
 			<version>${chromium.version}</version>
 		</dependency>
 	</dependencies>
@@ -115,6 +116,17 @@
 			<properties>
 				<flags>-XstartOnFirstThread</flags>
 				<platform>cocoa.macosx</platform>
+			</properties>
+		</profile>
+		<profile>
+			<id>amd64</id>
+			<activation>
+				<os>
+					<arch>amd64</arch>
+				</os>
+			</activation>
+			<properties>
+				<arch>x86_64</arch>
 			</properties>
 		</profile>
 	</profiles>
