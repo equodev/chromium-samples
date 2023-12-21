@@ -36,8 +36,8 @@ repositories {
 }
 
 dependencies {
-    implementation("com.equo:com.equo.chromium.cef.${platform}.${arch}:106.0.0")
-    implementation("com.equo:com.equo.chromium:106.0.0")
+    implementation("com.equo:com.equo.chromium.cef.${platform}.${arch}:106.0.20")
+    implementation("com.equo:com.equo.chromium:106.0.22")
     implementation("org.eclipse.platform:org.eclipse.swt.${platform}.${arch}:3.121.0")
     implementation("org.eclipse.platform:org.eclipse.swt:3.121.0")
 }

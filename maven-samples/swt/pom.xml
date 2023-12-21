@@ -10,7 +10,8 @@
 	<properties>
 		<maven.compiler>11</maven.compiler>
 		<swt.version>3.121.0</swt.version>
-		<chromium.version>106.0.0</chromium.version>
+		<chromium.version>106.0.22</chromium.version>
+		<chromium.platform.version>106.0.20</chromium.platform.version>
 		<arch>${os.arch}</arch>
 	</properties>
 
@@ -40,7 +41,7 @@
 		<dependency>
 			<groupId>com.equo</groupId>
 			<artifactId>com.equo.chromium.cef.${platform}.${arch}</artifactId>
-			<version>${chromium.version}</version>
+			<version>${chromium.platform.version}</version>
 		</dependency>
 	</dependencies>
 
