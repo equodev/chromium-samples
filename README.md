@@ -8,15 +8,22 @@ The samples allow you to run applications that use different toolkits:
 - *SWT* (Standart Widget Toolkit)
 - *Standalone* (plain Java application as Standalone browser wihout UI depdencies)
 - *Windowless* (without GUI window)
+- *Swing* (Swing Toolkit)
 - *RCP* (Eclipse RCP application)
 
+> **Swing based apps** require **Java 11** or later versions in order to run.
+
 > Our **Chromium RCP application** requires **Java 17** and **Maven 3.9** or later versions in order to run.
+
+## JxBrowser replacement
+
+You can run SWT and Swing examples with JxBrowser code using **Equo Chromium JX** provided inside the ***jx*** folder. Read more about it in [Equo documentation](https://docs.equo.dev/chromium/106.x/getting-started/migrating-from-jxbrowser.html) where you will find everything you need to migrate from JxBrowser quickly.
 
 ## Run Equo Chromium samples
 
 ### Maven applications
 
-To run a *Maven* application(maven-samples folder), you need to go into the project folder(swt or standalone) and run the command:
+To run a *Maven* application(maven-samples folder), you need to go into the project folder(swt, standalone, swing, jx/swt or jx/swing) and run the command:
 
 ```
 mvn verify
@@ -60,7 +67,7 @@ Import the **RCP** folder as an **Existing project from folder or archive** -> O
 
 ### Gradle applications
 
-To run a *Gradle* application(gradle-samples folder), you need to go into the project folder(swt or standalone) and run the command:
+To run a *Gradle* application(gradle-samples folder), you need to go into the project folder(swt, standalone, swing, jx/swt or jx/swing) and run the command:
 
 ```
 ./gradlew run

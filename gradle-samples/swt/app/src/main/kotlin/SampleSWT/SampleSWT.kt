@@ -31,7 +31,7 @@ fun main(args: Array<String?>) {
         button.setText("Print page paragraph")
         button.addSelectionListener(object : SelectionAdapter() {
             override fun widgetSelected(e: SelectionEvent?) {
-                browser.executeJavacript(
+                browser.executeJavaScript(
                     "console.log(document.getElementsByClassName(\"paragraph\")[0].children[0].innerHTML)"
                 )
             }

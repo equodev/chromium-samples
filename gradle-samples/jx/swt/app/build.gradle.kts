@@ -1,10 +1,13 @@
 
-var platform = ""
-var vmArgs = mutableListOf<String>()
 val chromiumVersion = "106.0.22"
 val chromiumPlatformVersion = "106.0.20"
+val chromiumJxVersion = "106.0.0.0"
+var vmArgs = mutableListOf<String>()
+var envVars = mutableMapOf<String, String>()
 val os = System.getProperty("os.name").toLowerCase()
+var platform = ""
 if (os.contains("linux")) {
+    envVars["GDK_BACKEND"] = "x11"
     platform = "gtk.linux"
     vmArgs.add("-Dchromium.init_threads=true")
 } else if (os.contains("mac")) {
@@ -13,16 +16,11 @@ if (os.contains("linux")) {
 } else if (os.contains("windows")) {
     platform = "win32.win32"
 }
-val arch = when {
-    System.getProperty("os.arch").toLowerCase().contains("amd64") -> "x86_64"
-    else -> System.getProperty("os.arch").toLowerCase()
-}
-
 
 configurations.all {
     resolutionStrategy.eachDependency {
         if (requested.name.contains("org.eclipse.swt.")) {
-            useTarget("${requested.group}:org.eclipse.swt.${platform}.${arch}:${requested.version}")
+            useTarget("${requested.group}:org.eclipse.swt.${platform}.x86_64:${requested.version}")
         }
     }
 }
@@ -38,13 +36,16 @@ repositories {
 }
 
 dependencies {
-    implementation("com.equo:com.equo.chromium.cef.${platform}.${arch}:${chromiumPlatformVersion}")
-    implementation("com.equo:com.equo.chromium:${chromiumVersion}")
-    implementation("org.eclipse.platform:org.eclipse.swt.${platform}.${arch}:3.121.0")
+    implementation("com.equo:com.equo.chromium.cef.${platform}.x86_64:${chromiumPlatformVersion}")
+    implementation("com.equo:com.equo.chromium.jx:${chromiumJxVersion}")
+    implementation("org.eclipse.platform:org.eclipse.swt.${platform}.x86_64:3.121.0")
     implementation("org.eclipse.platform:org.eclipse.swt:3.121.0")
 }
 
 application {
     applicationDefaultJvmArgs = vmArgs
     mainClass.set("SampleSWT.SampleSWTKt")
+    tasks.named<JavaExec>("run") {
+        environment(envVars)
+    }
 }

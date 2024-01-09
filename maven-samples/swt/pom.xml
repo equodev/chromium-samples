@@ -18,7 +18,7 @@
 	<repositories>
 		<repository>
 			<id>Equo-Chromium</id>
-			<url>https://dl.equo.dev/chromium-swt-ee/equo-gpl/mvn</url>
+			<url>https://dl.equo.dev/chromium-swt-ee/equoSamples/mvn</url>
 		</repository>
 	</repositories>
 

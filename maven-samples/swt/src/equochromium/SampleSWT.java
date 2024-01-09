@@ -33,7 +33,7 @@ public class SampleSWT {
 			button.addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					browser.executeJavacript(
+					browser.executeJavaScript(
 							"console.log(document.getElementsByClassName(\"paragraph\")[0].children[0].innerHTML)");
 				}
 			});
