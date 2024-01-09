@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension
+		id="product"
+		point="org.eclipse.core.runtime.products">
+		<product
+			name="sample.rcp.product"
+			application="sample.rcp.App">
+			<property
+				name="appName"
+				value="sample.rcp">
+			</property>
+		</product>
+	</extension>
+	<extension
+		id="App"
+		point="org.eclipse.core.runtime.applications">
+		<application
+			cardinality="singleton-global"
+			thread="main"
+			visible="true">
+			<run
+				class="sample.rcp.parts.Application">
+			</run>
+		</application>
+	</extension>
+</plugin>
+
