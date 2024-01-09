@@ -13,9 +13,6 @@ if (os.contains("linux")) {
 } else if (os.contains("windows")) {
     platform = "win32.win32"
 }
-if(JavaVersion.current().majorVersion.toInt() > 16) {
-    vmArgs.add("-Dkotlin.daemon.jvm.options=--illegal-access=permit")
-}
 
 configurations.all {
     resolutionStrategy.eachDependency {
@@ -26,7 +23,7 @@ configurations.all {
 }
 
 plugins {
-    kotlin("jvm") version "1.5.10"
+    kotlin("jvm") version "1.8.20"
     application
 }
 

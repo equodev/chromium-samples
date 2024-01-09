@@ -8,19 +8,13 @@ if (os.contains("linux")) {
     platform = "gtk.linux"
 } else if (os.contains("mac")) {
     platform = "cocoa.macosx"
-    if(JavaVersion.current().majorVersion.toInt() <= 16) {
-        vmArgs.addAll(listOf("--add-opens", "java.desktop/java.awt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.awt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.lwawt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.lwawt.macosx=ALL-UNNAMED"))
-    }
+    vmArgs.addAll(listOf("--add-opens", "java.desktop/java.awt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.awt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.lwawt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.lwawt.macosx=ALL-UNNAMED"))
 } else if (os.contains("windows")) {
     platform = "win32.win32"
 }
-if(JavaVersion.current().majorVersion.toInt() > 16) {
-   vmArgs.add("-Dkotlin.daemon.jvm.options=--illegal-access=permit")
-}
-vmArgs.add("-Dempty")
 
 plugins {
-    kotlin("jvm") version "1.5.10"
+    kotlin("jvm") version "1.8.20"
     application
 }
 
