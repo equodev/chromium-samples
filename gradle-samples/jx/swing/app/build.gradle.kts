@@ -1,7 +1,7 @@
 
-val chromiumVersion = "106.0.22"
-val chromiumPlatformVersion = "106.0.20"
-val chromiumJxVersion = "106.0.0.0"
+val chromiumVersion = "116.0.1"
+val chromiumPlatformVersion = "116.0.1"
+val chromiumJxVersion = "116.0.0.0"
 val os = System.getProperty("os.name").toLowerCase()
 var vmArgs = mutableListOf<String>()
 var platform = ""

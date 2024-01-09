@@ -10,8 +10,8 @@
 	<properties>
 		<maven.compiler>11</maven.compiler>
 		<swt.version>3.121.0</swt.version>
-		<chromium.version>106.0.22</chromium.version>
-		<chromium.platform.version>106.0.20</chromium.platform.version>
+		<chromium.version>116.0.1</chromium.version>
+		<chromium.platform.version>116.0.1</chromium.platform.version>
 		<arch>${os.arch}</arch>
 	</properties>
 

@@ -17,7 +17,7 @@ The samples allow you to run applications that use different toolkits:
 
 ## JxBrowser replacement
 
-You can run SWT and Swing examples with JxBrowser code using **Equo Chromium JX** provided inside the ***jx*** folder. Read more about it in [Equo documentation](https://docs.equo.dev/chromium/106.x/getting-started/migrating-from-jxbrowser.html) where you will find everything you need to migrate from JxBrowser quickly.
+You can run SWT and Swing examples with JxBrowser code using **Equo Chromium JX** provided inside the ***jx*** folder. Read more about it in [Equo documentation](https://docs.equo.dev/chromium/116.x/getting-started/migrating-from-jxbrowser.html) where you will find everything you need to migrate from JxBrowser quickly.
 
 ## Run Equo Chromium samples
 
