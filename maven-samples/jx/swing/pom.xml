@@ -10,14 +10,15 @@
 	<properties>
 		<maven.compiler>11</maven.compiler>
 		<flags>-Dempty</flags>
-		<chromium.version>95.0.12</chromium.version>
-		<chromium.jx.version>${chromium.version}.1</chromium.jx.version>
+		<chromium.version>95.0.29</chromium.version>
+		<chromium.platform.version>95.0.21</chromium.platform.version>
+		<chromium.jx.version>${chromium.version}.0</chromium.jx.version>
 	</properties>
 
 	<repositories>
 		<repository>
 			<id>Equo-Chromium</id>
-			<url>https://dl.equo.dev/chromium-swt-ee/jx/mvn</url>
+			<url>https://dl.equo.dev/chromium-swt-ee/equoSamples/mvn</url>
 		</repository>
 	</repositories>
 
@@ -30,7 +31,7 @@
 		<dependency>
 			<groupId>com.equo</groupId>
 			<artifactId>com.equo.chromium.cef.${platform}.x86_64</artifactId>
-			<version>${chromium.version}</version>
+			<version>${chromium.platform.version}</version>
 		</dependency>
 	</dependencies>
 

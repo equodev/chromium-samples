@@ -1,16 +1,22 @@
 
-val chromiumVersion = "95.0.12"
-val chromiumJxVersion = "${chromiumVersion}.1"
+val chromiumVersion = "95.0.29"
+val chromiumPlatformVersion = "95.0.21"
+val chromiumJxVersion = "${chromiumVersion}.0"
 val os = System.getProperty("os.name").toLowerCase()
 var vmArgs = mutableListOf<String>()
-if(os.contains("mac") && JavaVersion.current().majorVersion.toInt() <= 16) {
-    vmArgs.addAll(listOf("--add-opens", "java.desktop/java.awt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.awt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.lwawt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.lwawt.macosx=ALL-UNNAMED"))
+var platform = ""
+if (os.contains("linux")) {
+    platform = "gtk.linux"
+} else if (os.contains("mac")) {
+    platform = "cocoa.macosx"
+    if(JavaVersion.current().majorVersion.toInt() <= 16) {
+        vmArgs.addAll(listOf("--add-opens", "java.desktop/java.awt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.awt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.lwawt=ALL-UNNAMED", "--add-opens", "java.desktop/sun.lwawt.macosx=ALL-UNNAMED"))
+    }
+} else if (os.contains("windows")) {
+    platform = "win32.win32"
 }
-val platform = when {
-    os.contains("linux") -> "gtk.linux"
-    os.contains("win") -> "win32.win32"
-    os.contains("mac") -> "cocoa.macosx"
-    else -> ""
+if(JavaVersion.current().majorVersion.toInt() > 16) {
+    vmArgs.add("-Dkotlin.daemon.jvm.options=--illegal-access=permit")
 }
 
 plugins {
@@ -20,11 +26,11 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven(url = "https://dl.equo.dev/chromium-swt-ee/jx/mvn")
+    maven(url = "https://dl.equo.dev/chromium-swt-ee/equoSamples/mvn")
 }
 
 dependencies {
-    implementation("com.equo:com.equo.chromium.cef.${platform}.x86_64:${chromiumVersion}")
+    implementation("com.equo:com.equo.chromium.cef.${platform}.x86_64:${chromiumPlatformVersion}")
     implementation("com.equo:com.equo.chromium.jx:${chromiumJxVersion}")
 }
 

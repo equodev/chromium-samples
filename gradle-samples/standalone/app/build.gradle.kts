@@ -1,15 +1,19 @@
 
-val chromiumVersion = "95.0.12"
-var vmArgs = "-Dempty"
+val chromiumVersion = "95.0.29"
+val chromiumPlatformVersion = "95.0.21"
 val os = System.getProperty("os.name").toLowerCase()
-val platform = when {
-    os.contains("linux") -> "gtk.linux"
-    os.contains("win") -> "win32.win32"
-    os.contains("mac") -> {
-        vmArgs = "-XstartOnFirstThread"
-        "cocoa.macosx"
-    }
-    else -> ""
+var vmArgs = mutableListOf<String>()
+var platform = ""
+if (os.contains("linux")) {
+    platform = "gtk.linux"
+} else if (os.contains("mac")) {
+    platform = "cocoa.macosx"
+    vmArgs.add("-XstartOnFirstThread")
+} else if (os.contains("windows")) {
+    platform = "win32.win32"
+}
+if(JavaVersion.current().majorVersion.toInt() > 16) {
+    vmArgs.add("-Dkotlin.daemon.jvm.options=--illegal-access=permit")
 }
 
 plugins {
@@ -19,15 +23,15 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven(url = "https://dl.equo.dev/chromium-swt-ee/jx/mvn")
+    maven(url = "https://dl.equo.dev/chromium-swt-ee/equoSamples/mvn")
 }
 
 dependencies {
-    implementation("com.equo:com.equo.chromium.cef.${platform}.x86_64:${chromiumVersion}")
+    implementation("com.equo:com.equo.chromium.cef.${platform}.x86_64:${chromiumPlatformVersion}")
     implementation("com.equo:com.equo.chromium:${chromiumVersion}")
 }
 
 application {
-    applicationDefaultJvmArgs = listOf("${vmArgs}")
+    applicationDefaultJvmArgs = vmArgs
     mainClass.set("Standalone.StandaloneKt")
 }
