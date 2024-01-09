@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+<target name="Chromium RCP Target">
+	<locations>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<repository location="https://dl.equo.dev/chromium-swt-ce/oss/p2/116"/>
+			<unit id="com.equo.chromium.cef.feature.feature.group" version="116.0.0"/>
+			<unit id="com.equo.chromium.feature.feature.group" version="116.0.0"/>
+		</location>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<repository location="https://download.eclipse.org/eclipse/updates/4.27"/>
+			<unit id="org.eclipse.equinox.executable.feature.group" version="3.8.2000.v20221201-0912"/>
+			<unit id="org.eclipse.core.runtime.feature.feature.group" version="1.3.200.v20230220-1352"/>
+			<unit id="org.eclipse.rcp.feature.group" version="4.27.0.v20230302-0300"/>
+		</location>
+	</locations>
+</target>

@@ -11,7 +11,7 @@ public class SampleSwing extends JFrame {
 
 	private SampleSwing() {
 		setDefaultCloseOperation(
-			System.getProperty("os.name").toLowerCase().contains("win") ? EXIT_ON_CLOSE : DISPOSE_ON_CLOSE
+			System.getProperty("os.name").toLowerCase().contains("mac") ? EXIT_ON_CLOSE : DISPOSE_ON_CLOSE
 		);
 		ChromiumBrowser browser = ChromiumBrowser.swing(getContentPane(), BorderLayout.CENTER,
 				"https://docs.equo.dev/main/getting-started/introduction.html");
