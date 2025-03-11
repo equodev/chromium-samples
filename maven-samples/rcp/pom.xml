@@ -55,9 +55,19 @@
                             <arch>x86_64</arch>
                         </environment>
                         <environment>
+                            <os>linux</os>
+                            <ws>gtk</ws>
+                            <arch>aarch64</arch>
+                        </environment>
+                        <environment>
                             <os>win32</os>
                             <ws>win32</ws>
                             <arch>x86_64</arch>
+                        </environment>
+                        <environment>
+                            <os>win32</os>
+                            <ws>win32</ws>
+                            <arch>aarch64</arch>
                         </environment>
                         <environment>
                             <os>macosx</os>
@@ -117,7 +127,7 @@
             </activation>
             <properties>
                 <maven.exec.phase>verify</maven.exec.phase>
-                <executable>./linux/gtk/x86_64/ChromiumRCP</executable>
+                <executable>./linux/gtk/${os.arch}/ChromiumRCP</executable>
             </properties>
         </profile>
         <profile>
@@ -132,7 +142,7 @@
             </activation>
             <properties>
                 <maven.exec.phase>verify</maven.exec.phase>
-                <executable>win32/win32/x86_64/ChromiumRCP</executable>
+                <executable>win32/win32/${os.arch}/ChromiumRCP</executable>
             </properties>
         </profile>
         <profile>
@@ -150,5 +160,16 @@
                 <executable>macosx/cocoa/${os.arch}/Eclipse.app/Contents/MacOS/ChromiumRCP</executable>
             </properties>
         </profile>
+        <profile>
+			<id>amd64</id>
+			<activation>
+				<os>
+					<arch>amd64</arch>
+				</os>
+			</activation>
+			<properties>
+				<os.arch>x86_64</os.arch>
+			</properties>
+		</profile>
     </profiles>
 </project>
