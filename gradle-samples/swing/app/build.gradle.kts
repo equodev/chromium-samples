@@ -1,6 +1,6 @@
 
 var platform = ""
-val chromiumVersion = "128.0.0"
+val chromiumVersion = "138.0.0"
 val os = System.getProperty("os.name").toLowerCase()
 var vmArgs = mutableListOf<String>()
 if (os.contains("linux")) {
