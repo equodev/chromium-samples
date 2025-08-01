@@ -13,7 +13,7 @@ The samples allow you to run applications that use different toolkits:
 
 > **Swing based apps** require **Java 11** or later versions in order to run.
 
-> Our **Chromium RCP application** requires **Java 17** and **Maven 3.9** or later versions in order to run.
+> Our **Chromium RCP application** requires **Java 21** and **Maven 3.9** or later versions in order to run.
 
 ## Run Equo Chromium samples
 

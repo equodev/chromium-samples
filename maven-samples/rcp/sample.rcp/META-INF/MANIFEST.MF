@@ -9,6 +9,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.e4.ui.workbench.swt,
  com.equo.chromium
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Import-Package: javax.annotation
+Import-Package: jakarta.annotation
 Automatic-Module-Name: sample.rcp
 Bundle-ActivationPolicy: lazy
