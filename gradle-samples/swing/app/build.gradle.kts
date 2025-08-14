@@ -1,6 +1,6 @@
 
-val chromiumVersion = "128.0.8"
-val chromiumPlatformVersion = "128.0.8"
+val chromiumVersion = "138.0.7"
+val chromiumPlatformVersion = "138.0.6"
 val os = System.getProperty("os.name").toLowerCase()
 var vmArgs = mutableListOf<String>()
 val platform = when {
