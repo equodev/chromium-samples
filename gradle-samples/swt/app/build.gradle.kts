@@ -1,8 +1,8 @@
 
 var platform = ""
 var vmArgs = mutableListOf<String>()
-val chromiumVersion = "128.0.6"
-val chromiumPlatformVersion = "128.0.6"
+val chromiumVersion = "128.0.8"
+val chromiumPlatformVersion = "128.0.8"
 val os = System.getProperty("os.name").toLowerCase()
 if (os.contains("linux")) {
     platform = "gtk.linux"

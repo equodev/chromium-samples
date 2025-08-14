@@ -15,6 +15,7 @@ The samples allow you to run applications that use different toolkits:
 
 > Our **Chromium RCP application** requires **Java 17** and **Maven 3.9** or later versions in order to run.
 
+> All **Windows Arm64 samples** require **Java 21** or a later version in order to run.
 
 ## Run Equo Chromium samples
 

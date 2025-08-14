@@ -4,9 +4,9 @@
 	<locations>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 			<repository location="https://dl.equo.dev/chromium-swt-ee/equoSamples/p2/128"/>
-			<unit id="com.equo.chromium.cef.arm.feature.feature.group" version="128.0.6"/>
-			<unit id="com.equo.chromium.cef.feature.feature.group" version="128.0.6"/>
-			<unit id="com.equo.chromium.feature.feature.group" version="128.0.6"/>
+			<unit id="com.equo.chromium.cef.arm.feature.feature.group" version="128.0.8"/>
+			<unit id="com.equo.chromium.cef.feature.feature.group" version="128.0.8"/>
+			<unit id="com.equo.chromium.feature.feature.group" version="128.0.8"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 			<repository location="https://download.eclipse.org/eclipse/updates/4.34"/>
