@@ -9,7 +9,7 @@
 
 	<properties>
 		<maven.compiler>11</maven.compiler>
-		<chromium.version>138.0.0</chromium.version>
+		<chromium.version>144.0.0</chromium.version>
 		<flags>-Dempty</flags>
 	</properties>
 
