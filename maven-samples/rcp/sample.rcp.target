@@ -3,9 +3,10 @@
 <target name="Chromium RCP Target">
 	<locations>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-			<repository location="https://dl.equo.dev/chromium-swt-ee/equoSamples/p2/138"/>
-			<unit id="com.equo.chromium.cef.arm.feature.feature.group" version="138.0.6"/>
-			<unit id="com.equo.chromium.cef.feature.feature.group" version="138.0.6"/>
+			<repository location="https://dl.equo.dev/chromium-swt-ee/equoSamples/p2/144"/>
+			<unit id="com.equo.chromium.cef.arm.feature.feature.group" version="144.0.1"/>
+			<unit id="com.equo.chromium.cef.feature.feature.group" version="144.0.1"/>
+			<unit id="com.equo.chromium.feature.feature.group" version="144.0.1"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 			<repository location="https://download.eclipse.org/eclipse/updates/4.34"/>
