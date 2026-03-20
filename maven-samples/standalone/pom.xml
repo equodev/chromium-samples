@@ -9,10 +9,11 @@
 
 	<properties>
 		<maven.compiler>11</maven.compiler>
-		<chromium.version>128.0.6</chromium.version>
-		<chromium.platform.version>128.0.6</chromium.platform.version>
+		<chromium.version>128.0.38</chromium.version>
+		<chromium.platform.version>128.0.34</chromium.platform.version>
 		<arch>${os.arch}</arch>
 		<flags>-Dempty</flags>
+		<csd.arg>-Dcsd=false</csd.arg>
 	</properties>
 
 	<repositories>
@@ -61,6 +62,7 @@
 					<executable>java</executable>
 					<arguments>
 						<argument>${flags}</argument>
+						<argument>${csd.arg}</argument>
 						<argument>-classpath</argument>
 						<classpath/>
 						<argument>equochromium.SampleStandalone</argument>
@@ -71,6 +73,17 @@
 	</build>
 
 	<profiles>
+		<profile>
+			<id>csd</id>
+			<activation>
+				<property>
+					<name>csd</name>
+				</property>
+			</activation>
+			<properties>
+				<csd.arg>-Dcsd=true</csd.arg>
+			</properties>
+		</profile>
 		<profile>
 			<id>linux</id>
 			<activation>
