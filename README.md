@@ -31,6 +31,12 @@ The *SWT* sample has a *Windowless* mode which you can test by running the comma
 mvn verify -Dwindowless
 ```
 
+The *Standalone* sample has a *Client Side Decorations* mode which you can test by running:
+
+```
+mvn verify -Dcsd
+```
+
 To build the *RCP* sample:
 
 ```

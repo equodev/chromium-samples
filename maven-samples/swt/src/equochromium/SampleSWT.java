@@ -28,12 +28,19 @@ public class SampleSWT {
 		if (args.length > 0 && "true".equals(args[0])) {
 			shell.setText("Windowless");
 			ChromiumBrowser browser = ChromiumBrowser.windowless(URL);
+			browser.addConsoleListener(new ChromiumBrowser.ConsoleListener() {
+				@Override
+				public boolean message(int level, String message, String source, int line) {
+					System.out.println(message);
+					return false;
+				}
+			});
 			Button button = new Button(shell, SWT.PUSH);
 			button.setText("Print page paragraph");
 			button.addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					browser.executeJavacript(
+					browser.executeJavaScript(
 							"console.log(document.getElementsByClassName(\"paragraph\")[0].children[0].innerHTML)");
 				}
 			});
