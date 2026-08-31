@@ -1,6 +1,6 @@
 enableFeaturePreview("VERSION_CATALOGS")
 
-rootProject.name = "standalone"
+rootProject.name = "javafx"
 include("app")
 
 val tomlContent = file("../../gradle/libs.versions.toml").readText()

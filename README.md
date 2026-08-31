@@ -9,9 +9,12 @@ The samples allow you to run applications that use different toolkits:
 - *Standalone* (plain Java application as Standalone browser wihout UI depdencies)
 - *Windowless* (without GUI window)
 - *Swing* (Swing Toolkit)
+- *JavaFX* (JavaFX Toolkit)
 - *RCP* (Eclipse RCP application)
 
 > **Swing based apps** require **Java 11** or later versions in order to run.
+
+> **JavaFX based apps** require **Java 17** or later versions in order to run.
 
 > Our **Chromium RCP application** requires **Java 21** and **Maven 3.9** or later versions in order to run.
 
@@ -21,7 +24,7 @@ The samples allow you to run applications that use different toolkits:
 
 ### Maven applications
 
-To run a *Maven* application(maven-samples folder), you need to go into the project folder(swt, standalone or swing) and run the command:
+To run a *Maven* application(maven-samples folder), you need to go into the project folder(swt, standalone, swing, javafx or rcp) and run the command:
 
 ```
 mvn verify
@@ -31,6 +34,12 @@ The *SWT* sample has a *Windowless* mode which you can test by running the comma
 
 ```
 mvn verify -Dwindowless
+```
+
+The *Standalone* sample has a *Client Side Decorations* mode which you can test by running:
+
+```
+mvn verify -Dcsd
 ```
 
 To build the *RCP* sample:
@@ -53,7 +62,7 @@ Import the **RCP** folder as an **Existing project from folder or archive** -> O
 
 ### Gradle applications
 
-To run a *Gradle* application(gradle-samples folder), you need to go into the project folder(swt, standalone or swing) and run the command:
+To run a *Gradle* application(gradle-samples folder), you need to go into the project folder(swt, standalone, swing or javafx) and run the command:
 
 ```
 ./gradlew run
@@ -62,7 +71,13 @@ To run a *Gradle* application(gradle-samples folder), you need to go into the pr
 The *SWT* sample has a *Windowless* mode which you can test by running the command:
 
 ```
-./gradlew run --args=windowless
+./gradlew run -P=windowless
+```
+
+The *Standalone* sample has a *Client Side Decorations* mode which you can test by running:
+
+```
+./gradlew run -Pcsd
 ```
 
 

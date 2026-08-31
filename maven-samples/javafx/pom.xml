@@ -10,15 +10,17 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>standalone</artifactId>
+	<artifactId>javafx</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>
 		<maven.compiler>11</maven.compiler>
 		<arch>${os.arch}</arch>
+		<javafx.version>21.0.5</javafx.version>
+		<javafx.classifier>linux</javafx.classifier>
 		<flags>-Dempty</flags>
-		<csd.arg>-Dcsd=false</csd.arg>
+		<url>https://docs.equo.dev/main/getting-started/introduction.html</url>
 	</properties>
 
 	<repositories>
@@ -38,6 +40,25 @@
 			<groupId>com.equo</groupId>
 			<artifactId>com.equo.chromium.cef.${platform}.${arch}</artifactId>
 			<version>${chromium.platform.version}</version>
+		</dependency>
+		<!-- OpenJFX (classified per OS) — the browser is embedded as a JavaFX Node. -->
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-base</artifactId>
+			<version>${javafx.version}</version>
+			<classifier>${javafx.classifier}</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-graphics</artifactId>
+			<version>${javafx.version}</version>
+			<classifier>${javafx.classifier}</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>${javafx.version}</version>
+			<classifier>${javafx.classifier}</classifier>
 		</dependency>
 	</dependencies>
 
@@ -67,10 +88,10 @@
 					<executable>java</executable>
 					<arguments>
 						<argument>${flags}</argument>
-						<argument>${csd.arg}</argument>
+						<argument>-Durl=${url}</argument>
 						<argument>-classpath</argument>
 						<classpath/>
-						<argument>equochromium.SampleStandalone</argument>
+						<argument>equochromium.Launcher</argument>
 					</arguments>
 				</configuration>
 			</plugin>
@@ -78,17 +99,6 @@
 	</build>
 
 	<profiles>
-		<profile>
-			<id>csd</id>
-			<activation>
-				<property>
-					<name>csd</name>
-				</property>
-			</activation>
-			<properties>
-				<csd.arg>-Dcsd=true</csd.arg>
-			</properties>
-		</profile>
 		<profile>
 			<id>linux</id>
 			<activation>
@@ -98,6 +108,7 @@
 			</activation>
 			<properties>
 				<platform>gtk.linux</platform>
+				<javafx.classifier>linux</javafx.classifier>
 			</properties>
 		</profile>
 		<profile>
@@ -109,6 +120,7 @@
 			</activation>
 			<properties>
 				<platform>win32.win32</platform>
+				<javafx.classifier>win</javafx.classifier>
 			</properties>
 		</profile>
 		<profile>
@@ -119,8 +131,20 @@
 				</os>
 			</activation>
 			<properties>
-				<flags>-XstartOnFirstThread</flags>
 				<platform>cocoa.macosx</platform>
+				<javafx.classifier>mac</javafx.classifier>
+			</properties>
+		</profile>
+		<profile>
+			<id>mac-aarch64</id>
+			<activation>
+				<os>
+					<family>mac</family>
+					<arch>aarch64</arch>
+				</os>
+			</activation>
+			<properties>
+				<javafx.classifier>mac-aarch64</javafx.classifier>
 			</properties>
 		</profile>
 		<profile>

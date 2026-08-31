@@ -2,15 +2,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>equochromium</groupId>
+
+	<parent>
+		<groupId>equochromium</groupId>
+		<artifactId>samples-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
 	<artifactId>swing</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>
 		<maven.compiler>11</maven.compiler>
-		<chromium.version>144.0.1</chromium.version>
-		<chromium.platform.version>144.0.1</chromium.platform.version>
 		<flags>-Dempty</flags>
 	</properties>
 

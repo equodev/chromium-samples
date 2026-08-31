@@ -1,0 +1,3 @@
+[versions]
+chromium = "150.0.1"
+chromium-platform = "150.0.1"

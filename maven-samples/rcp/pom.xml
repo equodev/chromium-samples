@@ -11,6 +11,7 @@
 
     <properties>
         <maven.exec.phase>none</maven.exec.phase>
+        <productModule>sample.product</productModule>
     </properties>
 
     <build>
@@ -96,7 +97,29 @@
                 </executions>
                 <configuration>
                     <executable>${executable}</executable>
-                    <workingDirectory>${project.basedir}/sample.product/target/products/ChromiumRCP</workingDirectory>
+                    <workingDirectory>${project.basedir}/${productModule}/target/products/ChromiumRCP</workingDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.basedir}/sample.rcp/target</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>${project.basedir}/sample.product/target</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>${project.basedir}/sample.product.mac/target</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>${project.basedir}/sample.product.win/target</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>${project.basedir}/sample.product.linux/target</directory>
+                        </fileset>
+                    </filesets>
                 </configuration>
             </plugin>
         </plugins>
@@ -112,7 +135,7 @@
             </activation>
             <modules>
                 <module>sample.rcp</module>
-                <module>sample.product</module>
+                <module>${productModule}</module>
             </modules>
         </profile>
         <profile>
@@ -171,5 +194,41 @@
 				<os.arch>x86_64</os.arch>
 			</properties>
 		</profile>
+        <profile>
+            <id>platform-mac</id>
+            <activation>
+                <property>
+                    <name>platform</name>
+                    <value>mac</value>
+                </property>
+            </activation>
+            <properties>
+                <productModule>sample.product.mac</productModule>
+            </properties>
+        </profile>
+        <profile>
+            <id>platform-win</id>
+            <activation>
+                <property>
+                    <name>platform</name>
+                    <value>win</value>
+                </property>
+            </activation>
+            <properties>
+                <productModule>sample.product.win</productModule>
+            </properties>
+        </profile>
+        <profile>
+            <id>platform-linux</id>
+            <activation>
+                <property>
+                    <name>platform</name>
+                    <value>linux</value>
+                </property>
+            </activation>
+            <properties>
+                <productModule>sample.product.linux</productModule>
+            </properties>
+        </profile>
     </profiles>
 </project>

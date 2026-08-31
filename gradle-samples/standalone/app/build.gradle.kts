@@ -1,8 +1,8 @@
 
 var platform = ""
 var vmArgs = mutableListOf<String>()
-val chromiumVersion = "144.0.1"
-val chromiumPlatformVersion = "144.0.1"
+val chromiumVersion = extra["chromiumVersion"] as String
+val chromiumPlatformVersion = extra["chromiumPlatformVersion"] as String
 val os = System.getProperty("os.name").toLowerCase()
 if (os.contains("linux")) {
     platform = "gtk.linux"
@@ -15,6 +15,9 @@ if (os.contains("linux")) {
 val arch = when {
     System.getProperty("os.arch").toLowerCase().contains("amd64") -> "x86_64"
     else -> System.getProperty("os.arch").toLowerCase()
+}
+if (project.hasProperty("csd")) {
+    vmArgs.add("-Dcsd=true")
 }
 
 plugins {

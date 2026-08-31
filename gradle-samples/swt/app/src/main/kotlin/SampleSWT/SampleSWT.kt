@@ -27,6 +27,12 @@ fun main(args: Array<String?>) {
     if (args.size > 0 && "windowless".equals(args[0])) {
         shell.setText("Windowless")
         val browser: ChromiumBrowser = ChromiumBrowser.windowless(URL)
+        browser.addConsoleListener(object : ChromiumBrowser.ConsoleListener {
+            override fun message(level: Int, message: String?, source: String?, line: Int): Boolean {
+                println(message)
+                return false
+            }
+        })
         val button = Button(shell, SWT.PUSH)
         button.setText("Print page paragraph")
         button.addSelectionListener(object : SelectionAdapter() {

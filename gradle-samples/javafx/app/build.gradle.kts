@@ -3,13 +3,12 @@ var platform = ""
 var vmArgs = mutableListOf<String>()
 val chromiumVersion = extra["chromiumVersion"] as String
 val chromiumPlatformVersion = extra["chromiumPlatformVersion"] as String
+val javafxVersion = "21.0.5"
 val os = System.getProperty("os.name").toLowerCase()
 if (os.contains("linux")) {
     platform = "gtk.linux"
-    vmArgs.add("-Dchromium.init_threads=true")
 } else if (os.contains("mac")) {
     platform = "cocoa.macosx"
-    vmArgs.add("-XstartOnFirstThread")
 } else if (os.contains("windows")) {
     platform = "win32.win32"
 }
@@ -17,14 +16,12 @@ val arch = when {
     System.getProperty("os.arch").toLowerCase().contains("amd64") -> "x86_64"
     else -> System.getProperty("os.arch").toLowerCase()
 }
-
-
-configurations.all {
-    resolutionStrategy.eachDependency {
-        if (requested.name.contains("org.eclipse.swt.")) {
-            useTarget("${requested.group}:org.eclipse.swt.${platform}.${arch}:${requested.version}")
-        }
-    }
+// OpenJFX artifacts are classified per OS/arch (unlike the single com.equo.chromium artifact).
+val javafxClassifier = when {
+    os.contains("mac") && arch == "aarch64" -> "mac-aarch64"
+    os.contains("mac") -> "mac"
+    os.contains("windows") -> "win"
+    else -> "linux"
 }
 
 plugins {
@@ -40,15 +37,14 @@ repositories {
 dependencies {
     implementation("com.equo:com.equo.chromium.cef.${platform}.${arch}:${chromiumPlatformVersion}")
     implementation("com.equo:com.equo.chromium:${chromiumVersion}")
-    implementation("org.eclipse.platform:org.eclipse.swt.${platform}.${arch}:3.121.0")
-    implementation("org.eclipse.platform:org.eclipse.swt:3.121.0")
+    // The browser is embedded as a JavaFX Node.
+    for (module in listOf("base", "graphics", "controls")) {
+        implementation("org.openjfx:javafx-$module:$javafxVersion:$javafxClassifier")
+    }
 }
 
 application {
     applicationDefaultJvmArgs = vmArgs
-    mainClass.set("SampleSWT.SampleSWTKt")
-}
-
-tasks.named<JavaExec>("run") {
-    args = if (project.hasProperty("windowless")) listOf("windowless") else listOf()
+    // Non-Application entry point (top-level main) so the classpath launch works without --module-path.
+    mainClass.set("SampleJavaFx.SampleJavaFxKt")
 }
